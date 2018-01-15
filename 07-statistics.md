@@ -96,9 +96,41 @@ Looks like first babies might be lighter than others (dark blue = first_hist, li
 Difference of 0.089 standard deviations which is small. Similar to the difference in pregnancy lengths between first and other babies of 0.029
 
 
-
 ### Q2. [Think Stats Chapter 3 Exercise 1](statistics/3-1-actual_biased.md) (actual vs. biased)
 This problem presents a robust example of actual vs biased data.  As a data scientist, it will be important to examine not only the data that is available, but also the data that may be missing but highly relevant.  You will see how the absence of this relevant data will bias a dataset, its distribution, and ultimately, its statistical interpretation.
+
+    df = nsfg.ReadFemResp()
+    kids = df.numkdhh
+    kidspmf = thinkstats2.Pmf(kids)
+    print(kidspmf)
+    kidspmf_bias = BiasPmf(kidspmf)
+    print(kidspmf_bias)
+
+>>> Pmf({0: 0.46617820227659301, 1: 0.21405207379301322, 2: 0.19625801386889966, 3: 0.087138558157791451, 4: 0.025644380478869556, 5: 0.010728771424833181})
+
+>>> Pmf({0: 0.0, 1: 0.20899335717935616, 2: 0.38323965252938175, 3: 0.25523760858456823, 4: 0.10015329586101177, 5: 0.052376085845682166})
+
+    thinkplot.PrePlot(2)
+    thinkplot.Pmfs([kidspmf, kidspmf_bias])
+    thinkplot.Show(xlabel='num of kids', ylabel='PMF')
+
+>>> graph
+
+    kidspmf_mean = 0.0
+    for i, prob in kidspmf.d.items():
+            kidspmf_mean += prob * i
+    print(kidspmf_mean)
+
+    kidspmf_bias_mean = 0.0
+    for i, prob in kidspmf_bias.d.items():
+        kidspmf_bias_mean += prob * i
+    print(kidspmf_bias_mean)
+
+>>> 1.02420515504
+
+>>> 2.40367910066
+
+Effect size calculated by finding the difference in means shows that the class size bias for this data is really significant!
 
 ### Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
 This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
