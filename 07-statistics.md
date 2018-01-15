@@ -135,6 +135,36 @@ Effect size calculated by finding the difference in means shows that the class s
 ### Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
 This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
 
+    import random
+    import thinkplot
+    import thinkstats2
+
+    count = 0
+    stop = 1000
+    numbers = []
+    while count <= stop:
+        count += 1 
+        i = random.randint(1,1001)
+        numbers.append(i)
+
+    rand_pmf = thinkstats2.Pmf(numbers)
+    rand_cdf = thinkstats2.Cdf(numbers)
+
+PMF Graph
+
+    width = 0.05
+    thinkplot.PrePlot(1)
+    thinkplot.Pmf(rand_pmf)
+    thinkplot.Show(xlabel='weeks', axis=[1, 1000, 0, 0.008])
+
+CDF Graph
+
+    thinkplot.PrePlot(1)
+    thinkplot.Cdf(rand_cdf)
+    thinkplot.Show(xlabel='weight', ylabel='CDF')
+
+The CDF graph is approximately a straight line, which means that the distribution is uniform. The PMF varied anywhere from 0 to 8 occurences of the same number. 
+
 ### Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
 
