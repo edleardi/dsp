@@ -168,6 +168,35 @@ The CDF graph is approximately a straight line, which means that the distributio
 ### Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
 
+Import brfss data and find height column segmented for men
+
+    brfss_data = ReadBrfss()
+    men = brfss_data[brfss_data.sex == 1]
+    heights = men.htm3
+
+Check mean and std to make sure sex == 1 is male
+
+    mean = heights.mean()
+    std = heights.std()
+
+Write in scipy function from chapter
+
+    import scipy
+    def EvalNormalCdf(x, mu=0, sigma=1):
+        return scipy.stats.norm.cdf(x, loc=mu, scale=sigma)
+
+Convert inches to cm
+6'1" = 185 cm
+5'10" = 183 cm
+
+Apply function to find answer
+
+    sixone = EvalNormalCdf(185, 178, 7.7)
+    fiveten = EvalNormalCdf(183, 178, 7.7)
+    cdf_answer = sixone - fiveten
+    print(cdf_answer)
+
+0.0764 or ~8% of are between 5'10" and 6'1" 
 
 
 ### Q5. Bayesian (Elvis Presley twin) 
