@@ -224,9 +224,8 @@ P(I|K) = 5/11
 ### Q6. Bayesian &amp; Frequentist Comparison  
 How do frequentist and Bayesian statistics compare?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Frequentist statistics evaluates sample data by focusing on the frequency of occurences in the data. Bayesian statistics evaluates sample data by updating the probability of a hypothesis with extra information. Bayesian reasoning involves frequentist reasoning. Bayes theorem essentially says the probability of a hypothesis given a piece of evidence is equal to the probability of the evidence given the hypothesis times the probability of the hypothesis (a frequentist calculation) divided by the probability of the evidence (a frequentist calculation).
 
----
 
 ## <a name="section-e"></a>5.  Optional Exercises
 
